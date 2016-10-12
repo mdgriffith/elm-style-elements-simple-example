@@ -1,13 +1,9 @@
-module Guide exposing (..)
+module Main exposing (..)
 
 {-|
 -}
 
 import Html exposing (Html)
-
-
--- import Html.Attributes
-
 import Html.App
 import Elements exposing (..)
 

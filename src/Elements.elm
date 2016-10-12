@@ -102,8 +102,8 @@ box : List (Html.Attribute a) -> List (Element a) -> Element a
 box =
     element
         { base
-            | width = px 190
-            , height = px 190
+            | width = px 180
+            , height = px 180
             , padding = all 20
             , colors =
                 { background = Color.blue
