@@ -4,6 +4,7 @@ import Html exposing (Html)
 import Style exposing (..)
 import Style.Elements exposing (element, elementAs, build)
 import Style.Elements.Basic
+import Style.Basic
 import Color
 
 
@@ -21,17 +22,18 @@ base =
             , border = Color.rgb 230 230 230
             }
         , text =
-            { font = "'Noto Sans', Georgia"
+            { font = "Georgia"
             , size = 18
             , lineHeight = 1.7
             , characterOffset = Nothing
-            , italic = False
-            , boldness = Nothing
             , align = alignLeft
-            , decoration = Nothing
             , whitespace = normal
             }
     }
+
+
+blue =
+    Color.rgba 12 148 200 1
 
 
 
@@ -43,18 +45,18 @@ base =
 
 centered : List (Html.Attribute a) -> List (Element a) -> Html a
 centered =
-    let
-        style =
-            Style.Elements.Basic.centered
-    in
-        build { style | padding = topBottom 100 }
+    build
+        { base
+            | padding = topBottom 100
+            , layout = Style.Basic.centered
+        }
 
 
 pirateContent : List (Html.Attribute a) -> List (Element a) -> Element a
 pirateContent =
     element
         { base
-            | width = px 500
+            | width = px 700
             , padding = all 20
             , spacing = all 40
             , layout =
@@ -66,7 +68,7 @@ sidebar : List (Html.Attribute a) -> List (Element a) -> Element a
 sidebar =
     element
         { base
-            | width = px 200
+            | width = px 300
             , padding = all 20
             , spacing = topBottom 40
             , layout =
@@ -77,7 +79,7 @@ sidebar =
 p : List (Html.Attribute a) -> List (Element a) -> Element a
 p =
     elementAs "p"
-        { base | spacing = ( 0, 20, 20, 0 ) }
+        { base | spacing = all 20 }
 
 
 title : List (Html.Attribute a) -> List (Element a) -> Element a
@@ -85,14 +87,11 @@ title =
     elementAs "h1"
         { base
             | text =
-                { font = "'Noto Sans', Georgia"
+                { font = "Georgia"
                 , size = 24
                 , lineHeight = 1.4
                 , characterOffset = Nothing
-                , italic = False
-                , boldness = Nothing
                 , align = alignLeft
-                , decoration = Nothing
                 , whitespace = normal
                 }
         }
@@ -106,54 +105,11 @@ box =
             , height = px 180
             , padding = all 20
             , colors =
-                { background = Color.blue
+                { background = blue
                 , text = Color.white
                 , border = Color.rgb 230 230 230
                 }
         }
-
-
-floatLeft : List (Html.Attribute a) -> List (Element a) -> Element a
-floatLeft =
-    element
-        { base
-            | float = Just Style.floatLeft
-        }
-
-
-text : String -> Element msg
-text =
-    Style.Elements.Basic.text
-
-
-i : String -> Element msg
-i =
-    Style.Elements.Basic.i
-
-
-b : String -> Element msg
-b =
-    Style.Elements.Basic.b
-
-
-line : Element msg
-line =
-    Style.Elements.Basic.line
-
-
-break : Element msg
-break =
-    Style.Elements.Basic.break
-
-
-dottedList : List (Html.Attribute a) -> List (Element a) -> Element a
-dottedList =
-    Style.Elements.Basic.dottedList
-
-
-numberedList : List (Html.Attribute a) -> List (Element a) -> Element a
-numberedList =
-    Style.Elements.Basic.numberedList
 
 
 
@@ -183,11 +139,9 @@ tableHeader =
     elementAs "th"
         { empty
             | padding = all 10
-            , border =
-                { style = solid
-                , width = all 1
-                , corners = all 0
-                }
+            , borderStyle = solid
+            , borderWidth = all 1
+            , cornerRadius = all 0
         }
 
 
@@ -197,11 +151,9 @@ cell =
     elementAs "td"
         { empty
             | padding = all 10
-            , border =
-                { style = solid
-                , width = all 1
-                , corners = all 0
-                }
+            , borderStyle = solid
+            , borderWidth = all 1
+            , cornerRadius = all 0
         }
 
 

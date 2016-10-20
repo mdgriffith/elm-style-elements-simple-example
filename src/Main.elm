@@ -6,6 +6,7 @@ module Main exposing (..)
 import Html exposing (Html)
 import Html.App
 import Elements exposing (..)
+import Style.Elements.Basic exposing (text, i, b)
 
 
 main : Program Never
@@ -33,7 +34,11 @@ view model =
                 , i "doubloon starboard grog black jack gangway rutters."
                 ]
             , p []
-                [ floatLeft [] [ box [] [ text "Floating!" ] ]
+                [ Style.Elements.Basic.floatTopLeft <|
+                    box [] [ text "We be afloat on the port side!" ]
+                , text "Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors. Bring a spring upon her cable holystone blow the man down spanker Shiver me timbers to go on account lookout wherry doubloon chase. Belay yo-ho-ho keelhaul squiffy black spot yardarm spyglass sheet transom heave to."
+                , Style.Elements.Basic.floatRight <|
+                    box [] [ text "We be a-starboard now!" ]
                 , text "Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors. Bring a spring upon her cable holystone blow the man down spanker Shiver me timbers to go on account lookout wherry doubloon chase. Belay yo-ho-ho keelhaul squiffy black spot yardarm spyglass sheet transom heave to."
                 ]
             , title [] [ text "A Table of My Favorite Pirates" ]
